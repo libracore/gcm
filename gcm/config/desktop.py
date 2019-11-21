@@ -7,7 +7,7 @@ def get_data():
 		{
 			"module_name": "GCM",
 			"color": "green",
-			"icon": "'fa fa-tree'",
+			"icon": "fa fa-pagelines",
 			"type": "module",
 			"label": _("GCM")
 		}
