@@ -1,0 +1,162 @@
+<div class="row">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-10">
+		<h1>Geschenk-Gutscheine</h1>
+		<p>Es gibt Menschen, denen möchte man etwas schenken, das sie sich am besten selber aussuchen können. Und zwar zu dem Zeitpunkt, an dem sie es sich wünschen.</p>
+		<p>Dann sind die Geschenkgutscheine von Meier goldrichtig. Ganz klassisch auf hochwertigem Papier gedruckt oder als Geschenkkarte im praktischen EC-Format – bereits ab 25 Franken.</p>
+		<p>Einlösen kann man die Gutscheine auch Stück für Stück. Für einen Blumenstrauss zum Sonntagsfrühstück, für Zimmerpflanzen oder frische Gemüsesetzlinge für das Gartenbeet. Für ein dekoratives Accessoire oder die handliche Schere für das Gartenhobby.</p>
+	</div>
+	<div class="col-sm-1"></div>
+</div>
+<div class="row">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-10">
+		<div class="row">
+			<div class="col-sm-4">
+				<a onclick="toggle_klassisch();">
+					<img src="assets/gcm/images/gartencenter_geschenkgutschein.jpg" style="width: 270px; height: 270px; max-width: none;">
+				</a>
+				<div style="width: 270px;">Geschenkgutscheine klassisch</div>
+			</div>
+			<div class="col-sm-4">
+				<a onclick="toggle_ec();">
+					<img src="assets/gcm/images/gartencenter_geschenkgutschein_ec.jpg" style="width: 270px; height: 270px; max-width: none;">
+				</a>
+				<div style="width: 270px;">Geschenkkarte, EC-Format</div>
+			</div>
+			<div class="col-sm-4">
+				<a>
+					<img src="assets/gcm/images/gartencenter_geschenkgutschein_ec.jpg" style="width: 270px; height: 270px; max-width: none;">
+				</a>
+				<div style="width: 270px;">Print@Home Geschenkgutscheine</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-1"></div>
+</div>
+<div class="row hidden" id="sektion_klassisch">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-10">
+		<br><br><h1>Bestellung Geschenkgutscheine klassisch</h1>
+		<h2>Rechnungsadresse</h2>
+		<div class="form-group">
+			<label for="k_firma">Firma:</label>
+			<input type="text" class="form-control" id="k_firma">
+		</div>
+		<h3>Anrede</h3>
+		<div class="radio">
+			<label><input type="radio" name="optradio" id="k_herr">Herr</label>
+		</div>
+		<div class="radio">
+			<label><input type="radio" name="optradio" id="k_frau">Frau</label>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label for="k_vorname">Vorname:</label>
+					<input type="text" class="form-control" id="k_vorname">
+				</div>
+			</div>
+			<div class="col-sm-8">
+				<div class="form-group">
+					<label for="k_nachname">Nachname:</label>
+					<input type="text" class="form-control" id="k_nachname">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="k_strasse">Strasse:</label>
+			<input type="text" class="form-control" id="k_strasse">
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="form-group">
+					<label for="k_plz">PLZ:</label>
+					<input type="text" class="form-control" id="k_plz">
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="form-group">
+					<label for="k_ort">Ort:</label>
+					<input type="text" class="form-control" id="k_ort">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="k_tel">Telefon (tagsüber):</label>
+			<input type="text" class="form-control" id="k_tel">
+		</div>
+		<div class="form-group">
+			<label for="k_email">E-Mail:</label>
+			<input type="email" class="form-control" id="k_email">
+		</div>
+		<div class="form-group">
+			<label for="k_comment">Zusätzliche Mitteilung:</label>
+			<textarea class="form-control" rows="5" id="k_comment"></textarea>
+		</div> 
+	</div>
+	<div class="col-sm-1"></div>
+</div>
+<div class="row hidden" id="sektion_ec">
+	<div class="col-sm-1"></div>
+	<div class="col-sm-10">
+		<br><br><h1>Bestellung Geschenkkarte, EC-Format</h1>
+		<h2>Rechnungsadresse</h2>
+		<div class="form-group">
+			<label for="ec_firma">Firma:</label>
+			<input type="text" class="form-control" id="ec_firma">
+		</div>
+		<h3>Anrede</h3>
+		<div class="radio">
+			<label><input type="radio" name="optradio" id="ec_herr">Herr</label>
+		</div>
+		<div class="radio">
+			<label><input type="radio" name="optradio" id="ec_frau">Frau</label>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="form-group">
+					<label for="ec_vorname">Vorname:</label>
+					<input type="text" class="form-control" id="ec_vorname">
+				</div>
+			</div>
+			<div class="col-sm-8">
+				<div class="form-group">
+					<label for="ec_nachname">Nachname:</label>
+					<input type="text" class="form-control" id="ec_nachname">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="ec_strasse">Strasse:</label>
+			<input type="text" class="form-control" id="ec_strasse">
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="form-group">
+					<label for="ec_plz">PLZ:</label>
+					<input type="text" class="form-control" id="ec_plz">
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<div class="form-group">
+					<label for="ec_ort">Ort:</label>
+					<input type="text" class="form-control" id="ec_ort">
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="ec_tel">Telefon (tagsüber):</label>
+			<input type="text" class="form-control" id="ec_tel">
+		</div>
+		<div class="form-group">
+			<label for="ec_email">E-Mail:</label>
+			<input type="email" class="form-control" id="ec_email">
+		</div>
+		<div class="form-group">
+			<label for="ec_comment">Zusätzliche Mitteilung:</label>
+			<textarea class="form-control" rows="5" id="ec_comment"></textarea>
+		</div> 
+	</div>
+	<div class="col-sm-1"></div>
+</div>
