@@ -38,7 +38,7 @@
 </head>
 {% block body %}
 <body{% if path %} data-path="{{ path }}"{% endif %}>
-	<div class="main-section">
+	<div class="main-section" style="background-color: #f9f9f9;">
 		<div>
 			<!--<header>-->
 			{%- block navbar -%}
@@ -63,7 +63,7 @@
 			{%- endif -%}#}-->
 		</div>
 		<div>
-			<!--{#{%- block footer -%}{% include "templates/footer/gcm_footer.html" %}{%- endblock -%}#}-->
+			{%- block footer -%}{% include "templates/footer/gcm_footer.html" %}{%- endblock -%}
 		</div>
 	</div>
 	{% block base_scripts %}
