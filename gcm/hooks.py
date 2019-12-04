@@ -20,6 +20,7 @@ app_license = "AGPL"
 
 # include js, css files in header of web template
 # web_include_css = "/assets/gcm/css/gcm.css"
+web_include_css = "/assets/gcm/css/gcm.css"
 # web_include_js = "/assets/gcm/js/gcm.js"
 
 # include js in page
@@ -30,6 +31,14 @@ app_license = "AGPL"
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
+
+website_context = {
+	"base_template_path": "templates/gcm_base.html"
+}
+
+website_route_rules = [
+	{"from_route": "/gutschein", "to_route": "/gutscheine"}
+]
 
 # Home Pages
 # ----------

@@ -1,0 +1,85 @@
+@font-face {
+    font-family: FiraSans;
+    src: url('/assets/gcm/font/FiraSans-Regular.woff2');
+}
+body {
+  font-family: FiraSans;
+}
+#navbar_lvl1 {
+	background-image: url('/assets/gcm/images/gcm_schenken_background.jpg');
+	height: 500px;
+}
+#navbar_lvl2 {
+	background-color: white;
+	height: 30px;
+	opacity: 0.8;
+}
+#navbar_lvl3 {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+#navbar_lvl4 {
+	display: block;
+	float: right;
+	margin: 0 0 0 0;
+	padding: 0 4px 0 4px;
+	height: 30px;
+	cursor: pointer;
+}
+#navbar_lvl4 ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	z-index: 2000 !important;
+	font-weight: 600;
+}
+#navbar_lvl4 ul > li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+#navbar_lvl4 ul > li > a {
+	color: #000000;
+	margin: 0 0 0 4px;
+	line-height: 31px;
+	padding: 8px 6px 8px 6px;
+	text-decoration: none;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+#navbar_lvl5 {
+	max-width: 1200px;
+	margin: 0 auto;
+	position: relative;
+	height: 259px;
+}
+#navbar_lvl6 {
+	background-image: url('/assets/gcm/images/Logo_Meier_125_negativ.png');
+	background-repeat: no-repeat;
+	height: 229px;
+	top: 15px;
+	position: inherit;
+	cursor: pointer;
+}
+#navbar_lvl7 {
+	display: block;
+	cursor: pointer;
+	position: absolute;
+	top: 15px;
+	right: 4px;
+	width: 96px;
+	height: 25px;
+	z-index: 2000;
+}
+
+
+.order-btn {
+	background-color: #a0b450;
+	border: none;
+}
+.order-btn:hover {
+	background-color: white;
+	color: #a0b450;
+	border: 1px solid #a0b450;
+}
