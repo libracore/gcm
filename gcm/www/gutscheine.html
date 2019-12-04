@@ -1,9 +1,9 @@
 <div class="row">
 	<div class="col-sm-1"></div>
 	<div class="col-sm-10">
-		<h1>Geschenk-Gutscheine</h1>
+		<h1><a href="/gutscheine">Geschenk-Gutscheine</a></h1>
 		<p>Es gibt Menschen, denen möchte man etwas schenken, das sie sich am besten selber aussuchen können. Und zwar zu dem Zeitpunkt, an dem sie es sich wünschen.</p>
-		<p>Dann sind die Geschenkgutscheine von Meier goldrichtig. Ganz klassisch auf hochwertigem Papier gedruckt oder als Geschenkkarte im praktischen EC-Format – bereits ab 25 Franken.</p>
+		<p>Dann sind die Geschenkgutscheine von Meier goldrichtig. Ganz klassisch auf hochwertigem Papier gedruckt, als Geschenkkarte im praktischen EC-Format oder als Print@Home-Version – bereits ab 25 Franken.</p>
 		<p>Einlösen kann man die Gutscheine auch Stück für Stück. Für einen Blumenstrauss zum Sonntagsfrühstück, für Zimmerpflanzen oder frische Gemüsesetzlinge für das Gartenbeet. Für ein dekoratives Accessoire oder die handliche Schere für das Gartenhobby.</p>
 	</div>
 	<div class="col-sm-1"></div>
@@ -12,23 +12,29 @@
 	<div class="col-sm-1"></div>
 	<div class="col-sm-10">
 		<div class="row">
-			<div class="col-sm-4">
+			<div id="klassisch_img" class="col-sm-4" style="text-align: center;">
 				<a onclick="toggle_klassisch();">
 					<img src="assets/gcm/images/gartencenter_geschenkgutschein_270x270.jpg" style="width: 270px; height: 270px; max-width: none;">
 				</a>
-				<div style="width: 270px;">Geschenkgutscheine klassisch</div>
+				<div style="width: 100%; text-align: center;">Geschenkgutscheine klassisch<br>
+					<a class="btn btn-primary order-btn hidden" id="auswahl1" style="width: 50%;" onclick="toggle_auswahl();"><< Zurück</a>
+				</div>
 			</div>
-			<div class="col-sm-4">
+			<div id="ec_img" class="col-sm-4" style="text-align: center;">
 				<a onclick="toggle_ec();">
 					<img src="assets/gcm/images/gartencenter_geschenkgutschein_ec_270x270.jpg" style="width: 270px; height: 270px; max-width: none;">
 				</a>
-				<div style="width: 270px;">Geschenkkarte, EC-Format</div>
+				<div style="width: 100%; text-align: center;">Geschenkkarte, EC-Format<br>
+					<a class="btn btn-primary order-btn hidden" id="auswahl2" style="width: 50%;" onclick="toggle_auswahl();"><< Zurück</a>
+				</div>
 			</div>
-			<div class="col-sm-4">
+			<div id="print_img" class="col-sm-4" style="text-align: center;">
 				<a onclick="toggle_print_at_home();">
 					<img src="assets/gcm/images/print_at_home_270x270.jpg" style="width: 270px; height: 270px; max-width: none;">
 				</a>
-				<div style="width: 270px;">Print@Home Geschenkgutscheine</div>
+				<div style="width: 100%; text-align: center;">Print@Home Geschenkgutscheine<br>
+					<a class="btn btn-primary order-btn hidden" id="auswahl3" style="width: 50%;" onclick="toggle_auswahl();"><< Zurück</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -37,7 +43,26 @@
 <div class="row hidden" id="sektion_klassisch">
 	<div class="col-sm-1"></div>
 	<div class="col-sm-10">
-		<br><br><h1>Bestellung Geschenkgutscheine klassisch</h1>
+		<br><h1>Bestellung Geschenkgutscheine klassisch</h1>
+		<p>Die besonders wertige Ausführung, klassisch gestaltet im Format C4 und im attraktiven Geschenkumschlag.</p>
+		<div class="form-group">
+			<label for="sel2">Betragsauswahl</label>
+			<select class="form-control" id="sel2" onchange="betrag2();">
+				<option value="25">Fr. 25.00</option>
+				<option value="50">Fr. 50.00</option>
+				<option value="100">Fr. 100.00</option>
+				<option value="150">Fr. 150.00</option>
+				<option value="200">Fr. 200.00</option>
+				<option value="250">Fr. 250.00</option>
+				<option value="300">Fr. 300.00</option>
+				<option value="350">Fr. 350.00</option>
+				<option value="custom">Eigener Betrag</option>
+			</select>
+		</div>
+		<div class="form-group hidden" id="betrag_gruppe2">
+			<label for="betrag2">Bitte geben Sie einen Betrag zwischen Fr. 25.00 und Fr. 3'000.00 ein.</label>
+			<input type="float" class="form-control" id="betrag2">
+		</div>
 		<h2>Rechnungsadresse</h2>
 		<div class="form-group">
 			<label for="k_firma">Firma:</label>
@@ -94,14 +119,33 @@
 			<label for="k_comment">Zusätzliche Mitteilung:</label>
 			<textarea class="form-control" rows="5" id="k_comment"></textarea>
 		</div>
-		<a class="btn btn-primary order-btn" style="width: 100%;" onclick="tbd();">BESTELLEN >></a>
+		<a class="btn btn-primary order-btn" style="width: 100%;" onclick="bestellung('Klassisch', false);">BESTELLEN >></a>
 	</div>
 	<div class="col-sm-1"></div>
 </div>
 <div class="row hidden" id="sektion_ec">
 	<div class="col-sm-1"></div>
 	<div class="col-sm-10">
-		<br><br><h1>Bestellung Geschenkkarte, EC-Format</h1>
+		<br><h1>Bestellung Geschenkkarte, EC-Format</h1>
+		<p>Die praktische Geschenkkarte im EC-Format im schicken Kuvert. Die Geschenkkarte ist aus umweltfreundlichem Material und sogar kompostierbar.</p>
+		<div class="form-group">
+			<label for="sel3">Betragsauswahl</label>
+			<select class="form-control" id="sel3" onchange="betrag3();">
+				<option value="25">Fr. 25.00</option>
+				<option value="50">Fr. 50.00</option>
+				<option value="100">Fr. 100.00</option>
+				<option value="150">Fr. 150.00</option>
+				<option value="200">Fr. 200.00</option>
+				<option value="250">Fr. 250.00</option>
+				<option value="300">Fr. 300.00</option>
+				<option value="350">Fr. 350.00</option>
+				<option value="custom">Eigener Betrag</option>
+			</select>
+		</div>
+		<div class="form-group hidden" id="betrag_gruppe3">
+			<label for="betrag3">Bitte geben Sie einen Betrag zwischen Fr. 25.00 und Fr. 3'000.00 ein.</label>
+			<input type="float" class="form-control" id="betrag3">
+		</div>
 		<h2>Rechnungsadresse</h2>
 		<div class="form-group">
 			<label for="ec_firma">Firma:</label>
@@ -158,7 +202,7 @@
 			<label for="ec_comment">Zusätzliche Mitteilung:</label>
 			<textarea class="form-control" rows="5" id="ec_comment"></textarea>
 		</div>
-		<a class="btn btn-primary order-btn" style="width: 100%;" onclick="tbd();">BESTELLEN >></a>		
+		<a class="btn btn-primary order-btn" style="width: 100%;" onclick="bestellung('EC-Format', false);">BESTELLEN >></a>		
 	</div>
 	<div class="col-sm-1"></div>
 </div>
@@ -167,7 +211,7 @@
 	<div class="row">
 		<div class="col-sm-1"></div>
 		<div class="col-sm-10">
-			<br><br><h1>print@home Gutschein</h1>
+			<br><h1>Print@Home-Gutschein</h1>
 		</div>
 		<div class="col-sm-1"></div>
 	</div>
@@ -184,28 +228,45 @@
 					<label for="comment">Widmung</label>
 					<textarea class="form-control" rows="5" id="comment" maxlength="160" oninput="count();"></textarea>
 				</div>
-				<p id="anzahlzeichen" style="padding-bottom: 30px;">160 Zeichen übrig</p>
+				<p id="anzahlzeichen">160 Zeichen übrig</p>
+				
+				<div class="form-group">
+				<label for="motiv_auswahl">Motiv Auswahl</label>
+				<img src="/assets/gcm/images/herz.JPG" class="img-rounded" alt="Herz" id="Herz">
+				<img src="/assets/gcm/images/Blumen.JPG" class="img-rounded hidden" alt="Blumen" id="Blumen">
+				<img src="/assets/gcm/images/Blumen_2.jpg" class="img-rounded hidden" alt="Blumen 2" id="Blumen2">
+				<img src="/assets/gcm/images/Hortensien.jpg" class="img-rounded hidden" alt="Hortensien" id="Hortensien">
+				<img src="/assets/gcm/images/tulpenstrauss.jpg" class="img-rounded hidden" alt="Tulpenstrauss" id="Tulpenstrauss">
+				<select class="form-control" id="motiv_auswahl" onchange="change_img();" style="margin-bottom: 40px;">
+						<option value="Herz">Herz</option>
+						<option value="Blumen">Blumen</option>
+						<option value="Blumen2">Blumen 2</option>
+						<option value="Hortensien">Hortensien</option>
+						<option value="Tulpenstrauss">Tulpenstrauss</option>
+					</select>
+				</div>
 				<a class="btn btn-primary order-btn" style="margin-bottom: 5px; bottom: 0px; position: absolute; width: 82%;" onclick="vorschau();">VORSCHAU ANZEIGEN</a>
 			</div>
 		</div>
 		<div class="col-sm-6" style="padding-left: 0px !important; margin-top: 30px;">
-			<p style="font-size: 1.5rem; font-weight: 400;">Mit dem Wertgutschein geniessen die Beschenkten den Einkauf bei uns ganz nach individuellem Wunsch. Der Wertgutschein ist für das gesamte Angebot iGartencenter Meier gültig.<br><br>Die Einlösung von Teilbeträgen ist jederzeit möglich.</p>
-			<div class="form-group">
+			<p>Für jene, die es einfach mögen und persönlich zugleich – mit persönlicher Widmung und einem von 4 attraktiven Bildmotiven. Der Geschenkgutschein wird am Ende der Bestellung als PDF angezeigt sowie in ihrer Bestätigungs-Email. Sie können ihn also ausdrucken oder gleich per Email verschicken. Dadurch ist der Print@Home-Gutschein auch das ideale Last-Minute-Geschenk. Der Gutschein gilt für das gesamte Gartencenter-Sortiment und ist dank langer Laufzeit auch Stück für Stück einlösbar.</p>
+			<p><b>Wichtig:</b> Bitte beachten Sie, dass der Gutschein erst bei uns eingebucht wird und daher erst nach 24h gültig ist. Falls Sie ihn am Wochenende bestellt haben, ist er ab Dienstag früh gültig.</p> 
+			<br><div class="form-group">
 				<label for="sel1">Betragsauswahl</label>
 				<select class="form-control" id="sel1" onchange="betrag();">
-					<option>CHF 20.00</option>
-					<option>CHF 50.00</option>
-					<option>CHF 100.00</option>
-					<option>CHF 150.00</option>
-					<option>CHF 200.00</option>
-					<option>CHF 250.00</option>
-					<option>CHF 300.00</option>
-					<option>CHF 350.00</option>
-					<option>Eigener Betrag</option>
+				<option value="25">Fr. 25.00</option>
+				<option value="50">Fr. 50.00</option>
+				<option value="100">Fr. 100.00</option>
+				<option value="150">Fr. 150.00</option>
+				<option value="200">Fr. 200.00</option>
+				<option value="250">Fr. 250.00</option>
+				<option value="300">Fr. 300.00</option>
+				<option value="350">Fr. 350.00</option>
+				<option value="custom">Eigener Betrag</option>
 				</select>
 			</div>
 			<div class="form-group hidden" id="betrag_gruppe">
-				<label for="betrag">Bitte geben Sie einen Betrag zwischen CHF 20.00 und CHF 3'000.00 ein.</label>
+				<label for="betrag">Bitte geben Sie einen Betrag zwischen Fr. 25.00 und Fr. 3'000.00 ein.</label>
 				<input type="float" class="form-control" id="betrag">
 			</div>
 			<p><br></p>
@@ -274,53 +335,25 @@
 			<label for="ph_comment">Zusätzliche Mitteilung:</label>
 			<textarea class="form-control" rows="5" id="ph_comment"></textarea>
 		</div> 
-		<a class="btn btn-primary order-btn" style="width: 100%;" onclick="tbd();">BESTELLEN >></a>
+		<a class="btn btn-primary order-btn" style="width: 100%;" onclick="bestellung('print@home', false);">BESTELLEN >></a>
 	</div>
 	<div class="col-sm-1"></div>
 </div>
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h2 style="color:#a0b450;"><i class="fa fa-shopping-cart"></i> Ihre Bestellungsübersicht</h2>
+			</div>
+			<div class="modal-body">
+				<div id="modal_preview"></div>
+			</div>
+			<div class="modal-footer">
+				<a class="btn btn-primary order-btn" style="width: 100%;" onclick="bestellung('', true);">BESTELLEN >></a>
+			</div>
+		</div>
+	</div>
+</div>
 
-
-
-
-
-
-
-
-<h2>Modal Login Example</h2>
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-default btn-lg" id="myBtn">Login</button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 style="color:red;"><span class="glyphicon glyphicon-lock"></span> Login</h4>
-        </div>
-        <div class="modal-body">
-          <form role="form">
-            <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="text" class="form-control" id="psw" placeholder="Enter password">
-            </div>
-            <div class="checkbox">
-              <label><input type="checkbox" value="" checked>Remember me</label>
-            </div>
-            <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
-          <p>Not a member? <a href="#">Sign Up</a></p>
-          <p>Forgot <a href="#">Password?</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="hidden" id="barcode_container"><svg id="barcode"></svg></div>

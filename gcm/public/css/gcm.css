@@ -1,3 +1,10 @@
+@font-face {
+    font-family: FiraSans;
+    src: url('/assets/gcm/font/FiraSans-Regular.woff2');
+}
+body {
+  font-family: FiraSans;
+}
 #navbar_lvl1 {
 	background-image: url('/assets/gcm/images/gcm_schenken_background.jpg');
 	height: 500px;

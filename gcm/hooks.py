@@ -36,6 +36,10 @@ website_context = {
 	"base_template_path": "templates/gcm_base.html"
 }
 
+website_route_rules = [
+	{"from_route": "/gutschein", "to_route": "/gutscheine"}
+]
+
 # Home Pages
 # ----------
 
