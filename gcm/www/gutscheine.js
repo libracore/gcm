@@ -184,6 +184,19 @@ function vorschau() {
 	});
 }
 
+function show_print_at_home_pdf(name) {
+	frappe.call({
+		method: 'gcm.www.gutscheine.download_print_at_home_pdf',
+		args: {
+			"name": name
+		},
+		callback: function(r) {
+			var url = 'http://localhost/api/method/gcm.www.gutscheine.download_print_at_home_pdf?name=' + name;
+			var win = window.open(url, '_blank');
+			win.focus();
+		}
+	});
+}
 function tbd() {
 	frappe.msgprint("Dies muss zuerst noch programmiert werden...", "Noch nicht Programmiert");
 }
@@ -203,6 +216,8 @@ var amount = 25;
 var von = '';
 var fuer = '';
 var widmung = '';
+var comment = '';
+var motiv = '';
 function bestellung(format, go) {
 	if (format == 'Klassisch') {
 		company = document.getElementById("k_firma").value;
@@ -221,6 +236,7 @@ function bestellung(format, go) {
 		city = document.getElementById("k_ort").value;
 		email = document.getElementById("k_email").value;
 		phone = document.getElementById("k_tel").value;
+		comment = document.getElementById("k_comment").value;
 		amount = document.getElementById("sel2").value;
 		if (amount == "custom") {
 			amount = parseFloat(document.getElementById("betrag2").value);
@@ -246,6 +262,7 @@ function bestellung(format, go) {
 		city = document.getElementById("ec_ort").value;
 		email = document.getElementById("ec_email").value;
 		phone = document.getElementById("ec_tel").value;
+		comment = document.getElementById("ec_comment").value;
 		amount = document.getElementById("sel3").value;
 		if (amount == "custom") {
 			amount = parseFloat(document.getElementById("betrag3").value);
@@ -274,6 +291,8 @@ function bestellung(format, go) {
 		von = document.getElementById("of").value;
 		fuer = document.getElementById("for").value;
 		widmung = document.getElementById("comment").value;
+		comment = document.getElementById("ph_comment").value;
+		motiv = document.getElementById("motiv_auswahl").value;
 		amount = document.getElementById("sel1").value;
 		if (amount == "custom") {
 			amount = parseFloat(document.getElementById("betrag").value);
@@ -283,22 +302,34 @@ function bestellung(format, go) {
 			return false
 		}
 	}
+	if (!first_name || !last_name || !street || !plz || !city) {
+		frappe.msgprint("Bitte geben Sie mindestens Vorname, Nachname, Strasse, Postleitzahl und Ort an.", "Fehlerhafte Angaben");
+		return false
+	}
 	if (!go) {
-		if (company) {
-			document.getElementById("modal_preview").innerHTML = "<h2>Ihre Kontaktdaten</h2><p>" + company + "<br>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p>";
+		if (format == 'print@home') {
+			if (company) {
+				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr." + amount + "<br>Motiv: " + motiv + "</p><h2>Ihre Kontaktdaten</h2><p>" + company + "<br>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
+			} else {
+				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr." + amount + "<br>Motiv: " + motiv + "</p><h2>Ihre Kontaktdaten</h2><p>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
+			}
 		} else {
-			document.getElementById("modal_preview").innerHTML = "<h2>Ihre Kontaktdaten</h2><p>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p>";
+			if (company) {
+				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr." + amount + "</p><h2>Ihre Kontaktdaten</h2><p>" + company + "<br>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
+			} else {
+				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr." + amount + "</p><h2>Ihre Kontaktdaten</h2><p>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
+			}
 		}
 		go_format = format;
 		$("#myModal").modal();
 	} else {
 		$("#myModal").modal('hide');
 		frappe.show_message("Bitte warten, Ihr Gutschein wird erstellt");
-		get_barcode(go_format, amount, salutation, company, first_name, last_name, street, plz, city, email, phone);
+		get_barcode(go_format, amount, salutation, company, first_name, last_name, street, plz, city, email, phone, comment, motiv);
 	}
 }
 
-function get_barcode(go_format, amount, salutation, company, first_name, last_name, street, plz, city, email, phone) {
+function get_barcode(go_format, amount, salutation, company, first_name, last_name, street, plz, city, email, phone, comment, motiv) {
 	frappe.require("assets/frappe/js/lib/JsBarcode.all.min.js");
 	if (go_format == 'print@home') {
 		frappe.call({
@@ -376,11 +407,14 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 						"barcode": barcode,
 						"inscription": widmung,
 						"text_to": fuer,
-						"text_from": von
+						"text_from": von,
+						"information": comment,
+						"motiv": motiv
 					},
 					callback: function(r) {
 						frappe.hide_message();
-						frappe.msgprint('Ihr Gutschein wurde als "' + r.message +'" eröffnet. Sie erhalten ihn in den nächsten Tagen per Post.', "Vielen Dank");
+						frappe.msgprint('Ihr Gutschein wurde als "' + r.message +'" eröffnet. Sie können Ihn direkt speichern und ausdrucken, Sie erhalten Ihn ebenfalls in den nächsten Minuten als E-Mail', "Vielen Dank");
+						show_print_at_home_pdf(r.message);
 					}
 				});
 			}
@@ -421,7 +455,8 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 				"city": city,
 				"email": email,
 				"phone": phone,
-				"barcode": barcode
+				"barcode": barcode,
+				"information": comment
 			},
 			callback: function(r) {
 				frappe.hide_message();
