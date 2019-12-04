@@ -43,7 +43,7 @@ def download_print_at_home_pdf(name):
 	frappe.local.response.type = "download"
 	
 @frappe.whitelist(allow_guest=True)
-def create_gutschein(type='Klassisch', amount=0, valid_date='', barcode='', salutation='', company='', first_name='', last_name='', street='', plz='', city='', email='', phone='', text_from='', text_to='', inscription='', information='', motiv=''):
+def create_gutschein(type='Klassisch', amount=0, valid_date='', barcode='', salutation='', company='', first_name='', last_name='', street='', plz='', city='', email='', phone='', text_from='', text_to='', inscription='', informationen='', motiv=''):
 	barcode = barcode.replace("&lt;", "<")
 	barcode = barcode.replace("&gt;", ">")
 	barcode = barcode.replace("<svg-x", "<svg")
@@ -82,7 +82,7 @@ def create_gutschein(type='Klassisch', amount=0, valid_date='', barcode='', salu
 		"text_from": text_from,
 		"text_to": text_to,
 		"inscription": inscription,
-		"information": information,
+		"informationen": informationen,
 		"motiv": motiv
 	})
 	gutschein.insert(ignore_permissions=True)
