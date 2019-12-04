@@ -370,7 +370,7 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 				//******************************************************************
 				
 				var value = standard;
-				JsBarcode('#barcode', value, {height: 100, format: 'EAN13', textAlign: "center", textPosition: "bottom"})
+				JsBarcode('#barcode', value, {height: 40, format: 'EAN13', textAlign: "center", textPosition: "bottom"})
 				$('#barcode').attr('data-barcode-value', value);
 				
 				var svg_as_string = $('#barcode').prop('outerHTML');
@@ -421,7 +421,7 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 		});
 	} else {
 		var value = '000000000000';
-		JsBarcode('#barcode', value, {height: 100, format: 'EAN13', textAlign: "center", textPosition: "bottom"})
+		JsBarcode('#barcode', value, {height: 40, format: 'EAN13', textAlign: "center", textPosition: "bottom"})
 		$('#barcode').attr('data-barcode-value', value);
 		
 		var svg_as_string = $('#barcode').prop('outerHTML');
