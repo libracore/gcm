@@ -177,7 +177,7 @@ function vorschau() {
 			"betrag": betrag
 		},
 		callback: function(r) {
-			var url = 'http://localhost/api/method/gcm.www.gutscheine.download_vorschau_pdf?';
+			var url = '/api/method/gcm.www.gutscheine.download_vorschau_pdf?';
 			var win = window.open(url, '_blank');
 			win.focus();
 		}
@@ -191,7 +191,7 @@ function show_print_at_home_pdf(name) {
 			"name": name
 		},
 		callback: function(r) {
-			var url = 'http://localhost/api/method/gcm.www.gutscheine.download_print_at_home_pdf?name=' + name;
+			var url = '/api/method/gcm.www.gutscheine.download_print_at_home_pdf?name=' + name;
 			var win = window.open(url, '_blank');
 			win.focus();
 		}
@@ -366,7 +366,7 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 					pz = 10 - pz;
 				} */
 				
-				//barcode mit prüfzigger = standard + pz
+				//barcode mit prüfziffer = standard + pz
 				//******************************************************************
 				
 				var value = standard;
@@ -408,7 +408,7 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 						"inscription": widmung,
 						"text_to": fuer,
 						"text_from": von,
-						"information": comment,
+						"informationen": comment,
 						"motiv": motiv
 					},
 					callback: function(r) {
@@ -456,7 +456,7 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 				"email": email,
 				"phone": phone,
 				"barcode": barcode,
-				"information": comment
+				"informationen": comment
 			},
 			callback: function(r) {
 				frappe.hide_message();
