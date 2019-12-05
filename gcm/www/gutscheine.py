@@ -13,7 +13,7 @@ def vorschau(von='Kein von', fuer='Kein für', widmung='Keine Widmung', betrag=0
 	gutschein.inscription = widmung.replace("\n", "<br>")
 	gutschein.amount = betrag
 	gutschein.selling_date = nowdate()
-	gutschein.valid_date = add_years(nowdate(), 1)
+	gutschein.valid_date = add_years(nowdate(), 5)
 	if motiv == 'Herz':
 		motiv = 'Wintergruss'
 	if motiv == 'Blumen':
@@ -90,7 +90,7 @@ def create_gutschein(type='Klassisch', amount=0, valid_date='', barcode='', salu
 		"type": type,
 		"amount": amount,
 		"selling_date": nowdate(),
-		"valid_date": add_years(nowdate(), 1),
+		"valid_date": add_years(nowdate(), 5),
 		"barcode": barcode,
 		"salutation": salutation,
 		"company": company,
