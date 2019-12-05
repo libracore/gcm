@@ -6,7 +6,7 @@ from frappe.utils.data import nowdate, add_years
 import base64
 
 @frappe.whitelist(allow_guest=True)
-def vorschau(von='Kein von', fuer='Kein für', widmung='Keine Widmung', betrag=0):
+def vorschau(von='Kein von', fuer='Kein für', widmung='Keine Widmung', betrag=0, motiv=''):
 	gutschein = frappe.get_doc("Gutschein", 'Gutschein-000001')
 	gutschein.text_from = von
 	gutschein.text_to = fuer
@@ -14,6 +14,9 @@ def vorschau(von='Kein von', fuer='Kein für', widmung='Keine Widmung', betrag=0
 	gutschein.amount = betrag
 	gutschein.selling_date = nowdate()
 	gutschein.valid_date = add_years(nowdate(), 1)
+	if motiv == 'Blumen2':
+		motiv = 'Blumen 2'
+	gutschein.motiv = motiv
 	
 	gutschein.save(ignore_permissions=True)
 	
