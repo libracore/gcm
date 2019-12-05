@@ -17,7 +17,7 @@
 					<img src="assets/gcm/images/270x270px_geschenkgutschein.jpg" style="width: 270px; height: 270px; max-width: none;">
 				</a>
 				<div style="width: 100%; text-align: center;">Geschenkgutscheine klassisch<br>
-					<a class="btn btn-primary order-btn hidden" id="auswahl1" style="width: 50%;" onclick="toggle_auswahl();"><< Zurück</a>
+					<a class="hidden" id="auswahl1" style="float: left;" onclick="toggle_auswahl();"><i class="fa fa-arrow-left"></i> Zurück</a>
 				</div>
 			</div>
 			<div id="ec_img" class="col-sm-4" style="text-align: center;">
@@ -25,7 +25,7 @@
 					<img src="assets/gcm/images/270x270px_geschenkkarte_sommer.jpg" style="width: 270px; height: 270px; max-width: none;">
 				</a>
 				<div style="width: 100%; text-align: center;">Geschenkkarte, EC-Format<br>
-					<a class="btn btn-primary order-btn hidden" id="auswahl2" style="width: 50%;" onclick="toggle_auswahl();"><< Zurück</a>
+					<a class="hidden" id="auswahl2" style="float: left;" onclick="toggle_auswahl();"><i class="fa fa-arrow-left"></i> Zurück</a>
 				</div>
 			</div>
 			<div id="print_img" class="col-sm-4" style="text-align: center;">
@@ -33,7 +33,7 @@
 					<img src="assets/gcm/images/270x270px_geschenkgutschein_print.jpg" style="width: 270px; height: 270px; max-width: none;">
 				</a>
 				<div style="width: 100%; text-align: center;">Print@Home Geschenkgutscheine<br>
-					<a class="btn btn-primary order-btn hidden" id="auswahl3" style="width: 50%;" onclick="toggle_auswahl();"><< Zurück</a>
+					<a class="hidden" id="auswahl3" style="float: left;" onclick="toggle_auswahl();"><i class="fa fa-arrow-left"></i> Zurück</a>
 				</div>
 			</div>
 		</div>
@@ -119,7 +119,7 @@
 			<label for="k_comment">Zusätzliche Mitteilung:</label>
 			<textarea class="form-control" rows="5" id="k_comment"></textarea>
 		</div>
-		<a class="btn btn-primary order-btn" style="width: 100%;" onclick="bestellung('Klassisch', false);">BESTELLEN >></a>
+		<a class="btn btn-primary order-btn" style="float: right;" onclick="bestellung('Klassisch', false);">Bestellen</a>
 	</div>
 	<div class="col-sm-1"></div>
 </div>
@@ -202,7 +202,7 @@
 			<label for="ec_comment">Zusätzliche Mitteilung:</label>
 			<textarea class="form-control" rows="5" id="ec_comment"></textarea>
 		</div>
-		<a class="btn btn-primary order-btn" style="width: 100%;" onclick="bestellung('EC-Format', false);">BESTELLEN >></a>		
+		<a class="btn btn-primary order-btn" style="float: right;" onclick="bestellung('EC-Format', false);">Bestellen</a>		
 	</div>
 	<div class="col-sm-1"></div>
 </div>
@@ -219,13 +219,13 @@
 		<div class="col-sm-1"></div>
 		<div class="col-sm-4">
 			<div style="padding-left: 15px; padding-right: 15px;">
-				<h2>Sie können diesen Gutschein personalisieren</h2>
+				<h2>Sie können auch einen persönlichen Text oder eine Widmung eingeben.</h2>
 				<div class="form-group" style="margin-bottom: 0px;">
 					<label for="for">für</label>
 					<input type="text" class="form-control" id="for">
 					<label for="of">von</label>
 					<input type="text" class="form-control" id="of">
-					<label for="comment">Widmung</label>
+					<label for="comment">Ihr text</label>
 					<textarea class="form-control" rows="5" id="comment" maxlength="160" oninput="count();"></textarea>
 				</div>
 				<p id="anzahlzeichen">160 Zeichen übrig</p>
@@ -238,14 +238,14 @@
 				<img src="/assets/gcm/images/Hortensien_300x200.jpg" class="img-rounded hidden" alt="Hortensien" id="Hortensien">
 				<img src="/assets/gcm/images/tulpenstrauss_300x200.jpg" class="img-rounded hidden" alt="Tulpenstrauss" id="Tulpenstrauss">
 				<select class="form-control" id="motiv_auswahl" onchange="change_img();" style="margin-bottom: 40px;">
-						<option value="Herz">Herz</option>
-						<option value="Blumen">Blumen</option>
-						<option value="Blumen2">Blumen 2</option>
-						<option value="Hortensien">Hortensien</option>
-						<option value="Tulpenstrauss">Tulpenstrauss</option>
+						<option value="Herz">Wintergruss</option>
+						<option value="Blumen">Herbstblüte</option>
+						<option value="Blumen2">Glücksbringer</option>
+						<option value="Hortensien">Sommergarten</option>
+						<option value="Tulpenstrauss">Frühlingsstrauss</option>
 					</select>
 				</div>
-				<a class="btn btn-primary order-btn" style="margin-bottom: 5px; bottom: 0px; position: absolute; width: 82%;" onclick="vorschau();">VORSCHAU ANZEIGEN</a>
+				<a class="btn btn-primary order-btn" style="margin-bottom: 5px; bottom: 0px; position: absolute;" onclick="vorschau();">Vorschau anzeigen</a>
 			</div>
 		</div>
 		<div class="col-sm-6" style="padding-left: 0px !important; margin-top: 30px;">
@@ -269,8 +269,7 @@
 				<label for="betrag">Bitte geben Sie einen Betrag zwischen Fr. 25.00 und Fr. 3'000.00 ein.</label>
 				<input type="float" class="form-control" id="betrag">
 			</div>
-			<p><br></p>
-			<a class="btn btn-primary order-btn" style="margin-bottom: 5px; bottom: 0px; position: absolute; width: 96%;" onclick="toggle_print_at_home_adresse();">WEITER >></a>
+			<a class="btn btn-primary order-btn" style="float: right;" onclick="toggle_print_at_home_adresse();">Weiter</a>
 		</div>
 		<div class="col-sm-1">
 		</div>
@@ -335,7 +334,7 @@
 			<label for="ph_comment">Zusätzliche Mitteilung:</label>
 			<textarea class="form-control" rows="5" id="ph_comment"></textarea>
 		</div> 
-		<a class="btn btn-primary order-btn" style="width: 100%;" onclick="bestellung('print@home', false);">BESTELLEN >></a>
+		<a class="btn btn-primary order-btn" style="float: right;" onclick="bestellung('print@home', false);">Bestellen</a>
 	</div>
 	<div class="col-sm-1"></div>
 </div>
@@ -350,7 +349,7 @@
 				<div id="modal_preview"></div>
 			</div>
 			<div class="modal-footer">
-				<a class="btn btn-primary order-btn" style="width: 100%;" onclick="bestellung('', true);">BESTELLEN >></a>
+				<a class="btn btn-primary order-btn" style="float: right;" onclick="bestellung('', true);">Bestellen</a>
 			</div>
 		</div>
 	</div>

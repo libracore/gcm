@@ -79,7 +79,6 @@ body {
 	border: none;
 }
 .order-btn:hover {
-	background-color: white;
-	color: #a0b450;
-	border: 1px solid #a0b450;
+	background-color: #888888;
+	border-color: #888888;
 }
