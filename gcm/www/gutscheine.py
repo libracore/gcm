@@ -14,8 +14,16 @@ def vorschau(von='Kein von', fuer='Kein für', widmung='Keine Widmung', betrag=0
 	gutschein.amount = betrag
 	gutschein.selling_date = nowdate()
 	gutschein.valid_date = add_years(nowdate(), 1)
+	if motiv == 'Herz':
+		motiv = 'Wintergruss'
+	if motiv == 'Blumen':
+		motiv = 'Herbstblüte'
 	if motiv == 'Blumen2':
-		motiv = 'Blumen 2'
+		motiv = 'Glücksbringer'
+	if motiv == 'Hortensien':
+		motiv = 'Sommergarten'
+	if motiv == 'Tulpenstrauss':
+		motiv = 'Frühlingsstrauss'
 	gutschein.motiv = motiv
 	
 	gutschein.save(ignore_permissions=True)
@@ -65,6 +73,17 @@ def create_gutschein(type='Klassisch', amount=0, valid_date='', barcode='', salu
 	barcode = barcode.replace('<text style="font: 20px monospace;" ' + barcode.split("!*!")[3] + ' text-anchor="middle">', '<text style="font: 20px monospace;" ' + barcode.split("!*!")[2] + ' text-anchor="middle">', 2)
 	barcode = barcode.replace('<text style="font: 20px monospace;" ' + barcode.split("!*!")[2] + ' text-anchor="middle">', '<text style="font: 20px monospace;" ' + barcode.split("!*!")[1] + ' text-anchor="start">', 1)
 	barcode = barcode.split("!*!")[0]
+	
+	if motiv == 'Herz':
+		motiv = 'Wintergruss'
+	if motiv == 'Blumen':
+		motiv = 'Herbstblüte'
+	if motiv == 'Blumen2':
+		motiv = 'Glücksbringer'
+	if motiv == 'Hortensien':
+		motiv = 'Sommergarten'
+	if motiv == 'Tulpenstrauss':
+		motiv = 'Frühlingsstrauss'
 	
 	gutschein = frappe.get_doc({
 		"doctype": "Gutschein",

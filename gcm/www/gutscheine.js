@@ -14,12 +14,6 @@ function toggle_auswahl() {
 	ec_img.classList.toggle("hidden", false);
 	print_img.classList.toggle("hidden", false);
 	klassisch_img.classList.toggle("hidden", false);
-	klassisch_img.classList.toggle("col-sm-4", true);
-	klassisch_img.classList.toggle("col-sm-12", false);
-	ec_img.classList.toggle("col-sm-4", true);
-	ec_img.classList.toggle("col-sm-12", false);
-	print_img.classList.toggle("col-sm-4", true);
-	print_img.classList.toggle("col-sm-12", false);
 	
 	var zuruck_btn1  = document.getElementById("auswahl1");
 	zuruck_btn1.classList.toggle("hidden", true);
@@ -44,8 +38,6 @@ function toggle_klassisch() {
 	ec_img.classList.toggle("hidden", true);
 	print_img.classList.toggle("hidden", true);
 	klassisch_img.classList.toggle("hidden", false);
-	klassisch_img.classList.toggle("col-sm-4", false);
-	klassisch_img.classList.toggle("col-sm-12", true);
 	
 	var zuruck_btn1  = document.getElementById("auswahl1");
 	zuruck_btn1.classList.toggle("hidden", false);
@@ -66,8 +58,6 @@ function toggle_ec() {
 	ec_img.classList.toggle("hidden", false);
 	print_img.classList.toggle("hidden", true);
 	klassisch_img.classList.toggle("hidden", true);
-	ec_img.classList.toggle("col-sm-4", false);
-	ec_img.classList.toggle("col-sm-12", true);
 	
 	var zuruck_btn2  = document.getElementById("auswahl2");
 	zuruck_btn2.classList.toggle("hidden", false);
@@ -88,8 +78,6 @@ function toggle_print_at_home() {
 	ec_img.classList.toggle("hidden", true);
 	print_img.classList.toggle("hidden", false);
 	klassisch_img.classList.toggle("hidden", true);
-	print_img.classList.toggle("col-sm-4", false);
-	print_img.classList.toggle("col-sm-12", true);
 	
 	var zuruck_btn3  = document.getElementById("auswahl3");
 	zuruck_btn3.classList.toggle("hidden", false);
@@ -300,26 +288,26 @@ function bestellung(format, go) {
 			amount = parseFloat(document.getElementById("betrag").value);
 		}
 		if (!amount || amount < 25 || amount > 3000) {
-			frappe.msgprint("Bitte geben Sie einen korrekten Betrag zwischen CHF 25.00 und CHF 3'000 ein.", "Betrag fehlerhaft");
+			frappe.msgprint("Bitte geben Sie einen korrekten Betrag zwischen Fr. 25.00 und Fr. 3'000 ein.", "Betrag fehlerhaft");
 			return false
 		}
 	}
 	if (!first_name || !last_name || !street || !plz || !city) {
-		frappe.msgprint("Bitte geben Sie mindestens Vorname, Nachname, Strasse, Postleitzahl und Ort an.", "Fehlerhafte Angaben");
+		frappe.msgprint("Bitte geben Sie mindestens Vorname, Nachname, Strasse, Postleitzahl und Ort an.", "Fehlende Angaben");
 		return false
 	}
 	if (!go) {
 		if (format == 'print@home') {
 			if (company) {
-				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr." + amount + "<br>Motiv: " + motiv + "</p><h2>Ihre Kontaktdaten</h2><p>" + company + "<br>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
+				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr. " + amount + ".-<br>Motiv: " + motiv + "</p><h2>Ihre Kontaktdaten</h2><p>" + company + "<br>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
 			} else {
-				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr." + amount + "<br>Motiv: " + motiv + "</p><h2>Ihre Kontaktdaten</h2><p>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
+				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr. " + amount + ".-<br>Motiv: " + motiv + "</p><h2>Ihre Kontaktdaten</h2><p>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
 			}
 		} else {
 			if (company) {
-				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr." + amount + "</p><h2>Ihre Kontaktdaten</h2><p>" + company + "<br>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
+				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr. " + amount + ".-</p><h2>Ihre Kontaktdaten</h2><p>" + company + "<br>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
 			} else {
-				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr." + amount + "</p><h2>Ihre Kontaktdaten</h2><p>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
+				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr. " + amount + ".-</p><h2>Ihre Kontaktdaten</h2><p>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
 			}
 		}
 		go_format = format;
@@ -415,7 +403,7 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 					},
 					callback: function(r) {
 						frappe.hide_message();
-						frappe.msgprint('Ihr Gutschein wurde als "' + r.message +'" eröffnet. Sie können Ihn direkt speichern und ausdrucken, Sie erhalten Ihn ebenfalls in den nächsten Minuten als E-Mail', "Vielen Dank");
+						frappe.msgprint('Ihr Print@Home-Gutschein wurde als "' + r.message +'" eröffnet. Sie können Ihn direkt speichern und ausdrucken, Sie erhalten Ihn ebenfalls in den nächsten Minuten als E-Mail', "Vielen Dank");
 						show_print_at_home_pdf(r.message);
 					}
 				});
@@ -462,7 +450,11 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 			},
 			callback: function(r) {
 				frappe.hide_message();
-				frappe.msgprint('Ihr Gutschein wurde als "' + r.message +'" eröffnet. Sie erhalten ihn in den nächsten Tagen per Post.', "Vielen Dank");
+				if (go_format == 'Klassisch') {
+					frappe.msgprint('Ihr Gutschein wurde als "' + r.message +'" eröffnet. Sie erhalten ihn in den nächsten Tagen per Post.', "Vielen Dank");
+				} else {
+					frappe.msgprint('Ihre Geschenkkarte wurde als "' + r.message +'" eröffnet. Sie erhalten sie in den nächsten Tagen per Post.', "Vielen Dank");
+				}
 			}
 		});
 	}
