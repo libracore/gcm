@@ -162,6 +162,7 @@ function vorschau() {
 	var fuer = document.getElementById("for").value;
 	var widmung = document.getElementById("comment").value;
 	var betrag = document.getElementById("sel1").value;
+	var motiv = document.getElementById("motiv_auswahl").value;
 	if (betrag == 'custom') {
 		betrag = parseFloat(document.getElementById("betrag").value);
 	}
@@ -174,7 +175,8 @@ function vorschau() {
 			"von": von,
 			"fuer": fuer,
 			"widmung": widmung,
-			"betrag": betrag
+			"betrag": betrag,
+			"motiv": motiv
 		},
 		callback: function(r) {
 			var url = '/api/method/gcm.www.gutscheine.download_vorschau_pdf?';
