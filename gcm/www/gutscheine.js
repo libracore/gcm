@@ -297,11 +297,24 @@ function bestellung(format, go) {
 		return false
 	}
 	if (!go) {
+		var show_motiv = '';
+		if (motiv == 'Herz') {
+			show_motiv = 'Wintergruss';
+		} else if (motiv == 'Blumen') {
+			show_motiv = 'Herbstblüte';
+		} else if (motiv == 'Blumen2') {
+			show_motiv = 'Glücksbringer';
+		} else if (motiv == 'Hortensien') {
+			show_motiv = 'Sommergarten';
+		} else if (motiv == 'Tulpenstrauss') {
+			show_motiv = 'Frühlingsstrauss';
+		}
+		
 		if (format == 'print@home') {
 			if (company) {
-				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr. " + amount + ".-<br>Motiv: " + motiv + "</p><h2>Ihre Kontaktdaten</h2><p>" + company + "<br>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
+				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr. " + amount + ".-<br>Motiv: " + show_motiv + "</p><h2>Ihre Kontaktdaten</h2><p>" + company + "<br>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
 			} else {
-				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr. " + amount + ".-<br>Motiv: " + motiv + "</p><h2>Ihre Kontaktdaten</h2><p>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
+				document.getElementById("modal_preview").innerHTML = "<h2>Ihr Gutschein</h2><p>" + format + "<br>Betrag: Fr. " + amount + ".-<br>Motiv: " + show_motiv + "</p><h2>Ihre Kontaktdaten</h2><p>" + salutation + "<br>" + first_name + " " + last_name + "<br>" + street + "<br>" + plz + " " + city + "<br>" + phone + "<br>" + email + "</p><p>Zusätzliche Informationen:<br>" + comment + "</p>";
 			}
 		} else {
 			if (company) {

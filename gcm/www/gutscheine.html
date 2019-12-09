@@ -16,25 +16,22 @@
 				<a onclick="toggle_klassisch();">
 					<img src="assets/gcm/images/270x270px_geschenkgutschein.jpg" style="width: 270px; height: 270px; max-width: none;">
 				</a>
-				<div style="width: 100%; text-align: center;">Geschenkgutscheine klassisch<br>
-					<a class="hidden" id="auswahl1" style="float: left;" onclick="toggle_auswahl();"><i class="fa fa-arrow-left"></i> Zurück</a>
-				</div>
+				<div style="width: 100%; text-align: left; font-size: 16px;">Geschenkgutscheine klassisch</div>
+				<br><a class="hidden" id="auswahl1" style="float: left;" onclick="toggle_auswahl();"><i class="fa fa-arrow-left"></i> Zurück</a>
 			</div>
 			<div id="ec_img" class="col-sm-4" style="text-align: center;">
 				<a onclick="toggle_ec();">
 					<img src="assets/gcm/images/270x270px_geschenkkarte_sommer.jpg" style="width: 270px; height: 270px; max-width: none;">
 				</a>
-				<div style="width: 100%; text-align: center;">Geschenkkarte, EC-Format<br>
-					<a class="hidden" id="auswahl2" style="float: left;" onclick="toggle_auswahl();"><i class="fa fa-arrow-left"></i> Zurück</a>
-				</div>
+				<div style="width: 100%; text-align: left; font-size: 16px;">Geschenkkarte, EC-Format</div>
+				<br><a class="hidden" id="auswahl2" style="float: left;" onclick="toggle_auswahl();"><i class="fa fa-arrow-left"></i> Zurück</a>
 			</div>
 			<div id="print_img" class="col-sm-4" style="text-align: center;">
 				<a onclick="toggle_print_at_home();">
 					<img src="assets/gcm/images/270x270px_geschenkgutschein_print.jpg" style="width: 270px; height: 270px; max-width: none;">
 				</a>
-				<div style="width: 100%; text-align: center;">Print@Home Geschenkgutscheine<br>
-					<a class="hidden" id="auswahl3" style="float: left;" onclick="toggle_auswahl();"><i class="fa fa-arrow-left"></i> Zurück</a>
-				</div>
+				<div style="width: 100%; text-align: left; font-size: 16px;">Print@Home Geschenkgutscheine</div>
+				<br><a class="hidden" id="auswahl3" style="float: left;" onclick="toggle_auswahl();"><i class="fa fa-arrow-left"></i> Zurück</a>
 			</div>
 		</div>
 	</div>
@@ -217,38 +214,7 @@
 	</div>
 	<div class="row">
 		<div class="col-sm-1"></div>
-		<div class="col-sm-4">
-			<div style="padding-left: 15px; padding-right: 15px;">
-				<h2>Sie können auch einen persönlichen Text oder eine Widmung eingeben.</h2>
-				<div class="form-group" style="margin-bottom: 0px;">
-					<label for="for">für</label>
-					<input type="text" class="form-control" id="for">
-					<label for="of">von</label>
-					<input type="text" class="form-control" id="of">
-					<label for="comment">Ihr text</label>
-					<textarea class="form-control" rows="5" id="comment" maxlength="160" oninput="count();"></textarea>
-				</div>
-				<p id="anzahlzeichen">160 Zeichen übrig</p>
-				
-				<div class="form-group">
-				<label for="motiv_auswahl">Motiv Auswahl</label>
-				<img src="/assets/gcm/images/Herz_300x200.JPG" class="img-rounded" alt="Herz" id="Herz">
-				<img src="/assets/gcm/images/Blumen_300x200.JPG" class="img-rounded hidden" alt="Blumen" id="Blumen">
-				<img src="/assets/gcm/images/Glücksklee_270px.jpg" class="img-rounded hidden" alt="Blumen 2" id="Blumen2">
-				<img src="/assets/gcm/images/Hortensien_270px.jpg" class="img-rounded hidden" alt="Hortensien" id="Hortensien">
-				<img src="/assets/gcm/images/tulpenstrauss_270px.jpg" class="img-rounded hidden" alt="Tulpenstrauss" id="Tulpenstrauss">
-				<select class="form-control" id="motiv_auswahl" onchange="change_img();" style="margin-bottom: 40px;">
-						<option value="Herz">Wintergruss</option>
-						<option value="Blumen">Herbstblüte</option>
-						<option value="Blumen2">Glücksbringer</option>
-						<option value="Hortensien">Sommergarten</option>
-						<option value="Tulpenstrauss">Frühlingsstrauss</option>
-					</select>
-				</div>
-				<a class="btn btn-primary order-btn" style="margin-bottom: 5px; bottom: 0px; position: absolute;" onclick="vorschau();">Vorschau anzeigen</a>
-			</div>
-		</div>
-		<div class="col-sm-6" style="padding-left: 0px !important; margin-top: 30px;">
+		<div class="col-sm-10" style="padding-left: 0px !important; margin-top: 30px;">
 			<p>Für jene, die es einfach mögen und persönlich zugleich – mit persönlicher Widmung und einem von 4 attraktiven Bildmotiven. Der Geschenkgutschein wird am Ende der Bestellung als PDF angezeigt sowie in ihrer Bestätigungs-Email. Sie können ihn also ausdrucken oder gleich per Email verschicken. Dadurch ist der Print@Home-Gutschein auch das ideale Last-Minute-Geschenk. Der Gutschein gilt für das gesamte Gartencenter-Sortiment und ist dank langer Laufzeit auch Stück für Stück einlösbar.</p>
 			<p><b>Wichtig:</b> Bitte beachten Sie, dass der Gutschein erst bei uns eingebucht wird und daher erst nach 24h gültig ist. Falls Sie ihn am Wochenende bestellt haben, ist er ab Dienstag früh gültig.</p> 
 			<br><div class="form-group">
@@ -268,6 +234,35 @@
 			<div class="form-group hidden" id="betrag_gruppe">
 				<label for="betrag">Bitte geben Sie einen Betrag zwischen Fr. 25.00 und Fr. 3'000.00 ein.</label>
 				<input type="float" class="form-control" id="betrag">
+			</div>
+			<div>
+				<h2>Sie können auch einen persönlichen Text oder eine Widmung eingeben.</h2>
+				<div class="form-group" style="margin-bottom: 0px;">
+					<label for="for">für</label>
+					<input type="text" class="form-control" id="for">
+					<label for="of">von</label>
+					<input type="text" class="form-control" id="of">
+					<label for="comment">Ihr text</label>
+					<textarea class="form-control" rows="5" id="comment" maxlength="160" oninput="count();"></textarea>
+				</div>
+				<p id="anzahlzeichen">160 Zeichen übrig</p>
+				
+				<div class="form-group">
+				<img src="/assets/gcm/images/Herz_300x200.JPG" class="img-rounded" alt="Herz" id="Herz">
+				<img src="/assets/gcm/images/Blumen_300x200.JPG" class="img-rounded hidden" alt="Blumen" id="Blumen">
+				<img src="/assets/gcm/images/Glücksklee_270px.jpg" class="img-rounded hidden" alt="Blumen 2" id="Blumen2">
+				<img src="/assets/gcm/images/Hortensien_270px.jpg" class="img-rounded hidden" alt="Hortensien" id="Hortensien">
+				<img src="/assets/gcm/images/tulpenstrauss_270px.jpg" class="img-rounded hidden" alt="Tulpenstrauss" id="Tulpenstrauss">
+				<br><label for="motiv_auswahl">Motiv Auswahl</label>
+				<select class="form-control" id="motiv_auswahl" onchange="change_img();" style="margin-bottom: 40px;">
+						<option value="Herz">Wintergruss</option>
+						<option value="Blumen">Herbstblüte</option>
+						<option value="Blumen2">Glücksbringer</option>
+						<option value="Hortensien">Sommergarten</option>
+						<option value="Tulpenstrauss">Frühlingsstrauss</option>
+					</select>
+				</div>
+				<a class="btn btn-primary order-btn" style="margin-bottom: 5px; bottom: 0px; position: absolute;" onclick="vorschau();">Vorschau anzeigen</a>
 			</div>
 			<a class="btn btn-primary order-btn" style="float: right;" onclick="toggle_print_at_home_adresse();">Weiter</a>
 		</div>
