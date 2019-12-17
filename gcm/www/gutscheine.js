@@ -419,8 +419,12 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 						//Google Conversion
 						gtag('event', 'conversion', { 'send_to': 'AW-853618393/4FpECKeX3bcBENndhJcD', 'transaction_id': '' });
 						
-						frappe.msgprint('Ihr Print@Home-Gutschein wurde als "' + r.message +'" eröffnet. Sie können Ihn direkt speichern und ausdrucken, Sie erhalten Ihn ebenfalls in den nächsten Minuten als E-Mail', "Vielen Dank");
-						show_print_at_home_pdf(r.message);
+						if (parseFloat(amount) < 250) {
+							frappe.msgprint('Ihr Print@Home-Gutschein wurde als "' + r.message +'" eröffnet. Sie können Ihn direkt speichern und ausdrucken, Sie erhalten Ihn ebenfalls in den nächsten Minuten als E-Mail', "Vielen Dank");
+							show_print_at_home_pdf(r.message);
+						} else {
+							frappe.msgprint('Ihr Print@Home-Gutschein wurde als "' + r.message +'" eröffnet. Nach der erfolgreichen Bonitätsprüfung erhalten Sie Ihn umgehend als E-Mail', "Vielen Dank");
+						}
 					}
 				});
 			}
