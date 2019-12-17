@@ -416,6 +416,9 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 					},
 					callback: function(r) {
 						frappe.hide_message();
+						//Google Conversion
+						gtag('config', 'AW-853618393');
+						
 						frappe.msgprint('Ihr Print@Home-Gutschein wurde als "' + r.message +'" eröffnet. Sie können Ihn direkt speichern und ausdrucken, Sie erhalten Ihn ebenfalls in den nächsten Minuten als E-Mail', "Vielen Dank");
 						show_print_at_home_pdf(r.message);
 					}
@@ -463,6 +466,9 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 			},
 			callback: function(r) {
 				frappe.hide_message();
+				//Google Conversion
+				gtag('config', 'AW-853618393');
+				
 				if (go_format == 'Klassisch') {
 					frappe.msgprint('Ihr Gutschein wurde als "' + r.message +'" eröffnet. Sie erhalten ihn in den nächsten Tagen per Post.', "Vielen Dank");
 				} else {
