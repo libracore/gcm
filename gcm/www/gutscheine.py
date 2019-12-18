@@ -85,6 +85,17 @@ def create_gutschein(type='Klassisch', amount=0, valid_date='', barcode='', salu
 	if motiv == 'Tulpenstrauss':
 		motiv = 'Frühlingsstrauss'
 	
+	if type != "print@home":
+		mail = "Bestellbestätigung (Klassisch, EC)"
+	else:
+		if edge == 1:
+			mail = 'Bestellbestätigung ohne PDF (P@H Edge)'
+		else:
+			if amount < 250:
+				mail = 'Bestellbestätigung mit PDF (P@H)'
+			else:
+				mail = 'Bestellbestätigung ohne PDF (P@H Bonitätsprüfung)'
+				
 	gutschein = frappe.get_doc({
 		"doctype": "Gutschein",
 		"type": type,
@@ -106,7 +117,8 @@ def create_gutschein(type='Klassisch', amount=0, valid_date='', barcode='', salu
 		"inscription": inscription,
 		"informationen": informationen,
 		"motiv": motiv,
-		"edge": edge
+		"edge": edge,
+		"mail_spezifikation": mail
 	})
 	gutschein.insert(ignore_permissions=True)
 	
