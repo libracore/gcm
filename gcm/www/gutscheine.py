@@ -54,7 +54,7 @@ def download_print_at_home_pdf(name):
 	frappe.local.response.type = "download"
 	
 @frappe.whitelist(allow_guest=True)
-def create_gutschein(type='Klassisch', amount=0, valid_date='', barcode='', salutation='', company='', first_name='', last_name='', street='', plz='', city='', email='', phone='', text_from='', text_to='', inscription='', informationen='', motiv=''):
+def create_gutschein(type='Klassisch', amount=0, valid_date='', barcode='', salutation='', company='', first_name='', last_name='', street='', plz='', city='', email='', phone='', text_from='', text_to='', inscription='', informationen='', motiv='', edge=0):
 	barcode = barcode.replace("&lt;", "<")
 	barcode = barcode.replace("&gt;", ">")
 	barcode = barcode.replace("<svg-x", "<svg")
@@ -73,7 +73,7 @@ def create_gutschein(type='Klassisch', amount=0, valid_date='', barcode='', salu
 	barcode = barcode.replace('<text style="font: 20px monospace;" ' + barcode.split("!*!")[3] + ' text-anchor="middle">', '<text style="font: 20px monospace;" ' + barcode.split("!*!")[2] + ' text-anchor="middle">', 2)
 	barcode = barcode.replace('<text style="font: 20px monospace;" ' + barcode.split("!*!")[2] + ' text-anchor="middle">', '<text style="font: 20px monospace;" ' + barcode.split("!*!")[1] + ' text-anchor="start">', 1)
 	barcode = barcode.split("!*!")[0]
-	
+	#frappe.throw(str(barcode))
 	if motiv == 'Herz':
 		motiv = 'Wintergruss'
 	if motiv == 'Blumen':
@@ -105,7 +105,8 @@ def create_gutschein(type='Klassisch', amount=0, valid_date='', barcode='', salu
 		"text_to": text_to,
 		"inscription": inscription,
 		"informationen": informationen,
-		"motiv": motiv
+		"motiv": motiv,
+		"edge": edge
 	})
 	gutschein.insert(ignore_permissions=True)
 	

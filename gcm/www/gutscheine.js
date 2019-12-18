@@ -21,6 +21,10 @@ function toggle_auswahl() {
 	zuruck_btn2.classList.toggle("hidden", true);
 	var zuruck_btn3  = document.getElementById("auswahl3");
 	zuruck_btn3.classList.toggle("hidden", true);
+	
+	document.getElementById("edge_warnung").classList.toggle("hidden", true);
+	document.getElementById("edge_warnung1").classList.toggle("hidden", true);
+	document.getElementById("edge_warnung2").classList.toggle("hidden", true);
 }
 function toggle_klassisch() {
 	var klassisch = document.getElementById("sektion_klassisch");
@@ -81,6 +85,10 @@ function toggle_print_at_home() {
 	
 	var zuruck_btn3  = document.getElementById("auswahl3");
 	zuruck_btn3.classList.toggle("hidden", false);
+	
+	if (navigator.userAgent.includes("Edge")) {
+		document.getElementById("edge_warnung").classList.toggle("hidden", false);
+	}
 }
 function toggle_print_at_home_adresse() {
 	var klassisch = document.getElementById("sektion_klassisch");
@@ -91,6 +99,11 @@ function toggle_print_at_home_adresse() {
 	ec.classList.toggle("hidden", true);
 	print_at_home.classList.toggle("hidden", true);
 	print_at_home_adresse.classList.toggle("hidden", false);
+	
+	if (navigator.userAgent.includes("Edge")) {
+		document.getElementById("edge_warnung1").classList.toggle("hidden", false);
+		document.getElementById("edge_warnung2").classList.toggle("hidden", false);
+	}
 }
 function change_img() {
 	var img = document.getElementById("motiv_auswahl").value;
@@ -333,6 +346,7 @@ function bestellung(format, go) {
 }
 
 function get_barcode(go_format, amount, salutation, company, first_name, last_name, street, plz, city, email, phone, comment, motiv) {
+	
 	frappe.require("assets/frappe/js/lib/JsBarcode.all.min.js");
 	if (go_format == 'print@home') {
 		frappe.call({
@@ -393,6 +407,10 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 				barcode = barcode + '!*!x="' + $('#barcode > g > text')[4].attributes.x.nodeValue + '" y="' + $('#barcode > g > text')[4].attributes.y.nodeValue + '"';
 				barcode = barcode + '!*!x="' + $('#barcode > g > text')[5].attributes.x.nodeValue + '" y="' + $('#barcode > g > text')[5].attributes.y.nodeValue + '"';
 				
+				var edge = 0;
+				if (navigator.userAgent.includes("Edge")) {
+					edge = 1;
+				}
 				frappe.call({
 					method: 'gcm.www.gutscheine.create_gutschein',
 					args: {
@@ -412,7 +430,8 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 						"text_to": fuer,
 						"text_from": von,
 						"informationen": comment,
-						"motiv": motiv
+						"motiv": motiv,
+						"edge": edge
 					},
 					callback: function(r) {
 						frappe.hide_message();
@@ -420,8 +439,12 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 						gtag('event', 'conversion', { 'send_to': 'AW-853618393/4FpECKeX3bcBENndhJcD', 'transaction_id': '' });
 						
 						if (parseFloat(amount) < 250) {
-							frappe.msgprint('Ihr Print@Home-Gutschein wurde als "' + r.message +'" eröffnet. Sie können Ihn direkt speichern und ausdrucken, Sie erhalten Ihn ebenfalls in den nächsten Minuten als E-Mail', "Vielen Dank");
-							show_print_at_home_pdf(r.message);
+							if (navigator.userAgent.includes("Edge")) {
+								frappe.msgprint('Ihr Print@Home-Gutschein wurde als "' + r.message +'" eröffnet.<br>Aufgrund von Webbrowsertechnischen Gründen muss Ihr Print@Home-Gutschein von Hand verarbeitet werden. Sie erhalten Ihn umgehend als E-Mail.', "Vielen Dank");
+							} else {
+								frappe.msgprint('Ihr Print@Home-Gutschein wurde als "' + r.message +'" eröffnet. Sie können Ihn direkt speichern und ausdrucken, Sie erhalten Ihn ebenfalls in den nächsten Minuten als E-Mail', "Vielen Dank");
+								show_print_at_home_pdf(r.message);
+							}
 						} else {
 							frappe.msgprint('Ihr Print@Home-Gutschein wurde als "' + r.message +'" eröffnet. Nach der erfolgreichen Bonitätsprüfung erhalten Sie Ihn umgehend als E-Mail', "Vielen Dank");
 						}
