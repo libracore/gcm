@@ -88,10 +88,10 @@ def create_gutschein(type='Klassisch', amount=0, valid_date='', barcode='', salu
 	if type != "print@home":
 		mail = "Bestellbestätigung (Klassisch, EC)"
 	else:
-		if edge == 1:
+		if int(edge) == 1:
 			mail = 'Bestellbestätigung ohne PDF (P@H Edge)'
 		else:
-			if amount < 250:
+			if int(amount) < 250:
 				mail = 'Bestellbestätigung mit PDF (P@H)'
 			else:
 				mail = 'Bestellbestätigung ohne PDF (P@H Bonitätsprüfung)'
