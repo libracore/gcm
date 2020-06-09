@@ -34,7 +34,7 @@ def vorschau(von='Kein von', fuer='Kein für', widmung='Keine Widmung', betrag=0
 def download_vorschau_pdf():
 	doctype="Gutschein"
 	name='Gutschein-000001'
-	format='print@home'
+	format='Vorschau'
 	doc=None
 	no_letterhead=0
 	html = frappe.get_print(doctype, name, format, doc=doc, no_letterhead=no_letterhead)
