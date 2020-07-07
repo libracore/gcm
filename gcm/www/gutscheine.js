@@ -194,6 +194,7 @@ function show_print_at_home_pdf(name) {
 			"name": name
 		},
 		callback: function(r) {
+			location.reload();
 			var url = '/api/method/gcm.www.gutscheine.download_print_at_home_pdf?name=' + name;
 			var win = window.open(url, '_blank');
 			win.focus();
@@ -441,12 +442,14 @@ function get_barcode(go_format, amount, salutation, company, first_name, last_na
 						if (parseFloat(amount) < 250) {
 							if (navigator.userAgent.includes("Edge")) {
 								frappe.msgprint('Ihr Print@Home-Gutschein wurde als "' + r.message +'" eröffnet.<br>Aufgrund von Webbrowsertechnischen Gründen muss Ihr Print@Home-Gutschein von Hand verarbeitet werden. Sie erhalten Ihn umgehend als E-Mail.', "Vielen Dank");
+								setTimeout(function(){ location.reload(); }, 2000);
 							} else {
 								frappe.msgprint('Ihr Print@Home-Gutschein wurde als "' + r.message +'" eröffnet. Sie können Ihn direkt speichern und ausdrucken, Sie erhalten Ihn ebenfalls in den nächsten Minuten als E-Mail', "Vielen Dank");
 								show_print_at_home_pdf(r.message);
 							}
 						} else {
 							frappe.msgprint('Ihr Print@Home-Gutschein wurde als "' + r.message +'" eröffnet. Nach der erfolgreichen Bonitätsprüfung erhalten Sie Ihn umgehend als E-Mail', "Vielen Dank");
+							setTimeout(function(){ location.reload(); }, 2000);
 						}
 					}
 				});
